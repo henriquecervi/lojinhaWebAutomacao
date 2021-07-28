@@ -7,6 +7,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import java.time.Duration;
+
 @DisplayName("Testes Web do Módulo de Produtos")
 public class ProdutosTest {
 
@@ -19,6 +21,10 @@ public class ProdutosTest {
 
         // maximizar janela
         navegador.manage().window().maximize();
+
+        //espera implicita
+        navegador.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+
         // Navegar para a página da lojinha web
         navegador.get("http://165.227.93.41/lojinha-web/v2/");
 
@@ -45,5 +51,8 @@ public class ProdutosTest {
         // validar mensagem de erro fora apresentada
         String mensagemToast = navegador.findElement(By.cssSelector(".toast.rounded")).getText();
         Assertions.assertEquals("O valor do produto deve estar entre R$ 0,01 e R$ 7.000,00", mensagemToast);
+
+        //encerrar navegador
+        navegador.quit();
     }
 }
