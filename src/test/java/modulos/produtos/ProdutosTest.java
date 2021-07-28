@@ -28,6 +28,8 @@ public class ProdutosTest {
         navegador.findElement(By.cssSelector("label[for='senha']"));
         navegador.findElement(By.id("senha")).sendKeys("admin");
 
+        navegador.findElement(By.cssSelector("button[name='action']")).click();
+
         // tela de registro de produto
 
         // preencher dados do produto e o valor será = 0
