@@ -1,5 +1,6 @@
 package modulos.produtos;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
@@ -42,5 +43,7 @@ public class ProdutosTest {
         navegador.findElement(By.cssSelector("button[type='submit']")).click();
 
         // validar mensagem de erro fora apresentada
+        String mensagemToast = navegador.findElement(By.cssSelector(".toast.rounded")).getText();
+        Assertions.assertEquals("O valor do produto deve estar entre R$ 0,01 e R$ 7.000,00", mensagemToast);
     }
 }
