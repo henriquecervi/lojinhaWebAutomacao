@@ -31,10 +31,15 @@ public class ProdutosTest {
         navegador.findElement(By.cssSelector("button[name='action']")).click();
 
         // tela de registro de produto
+        navegador.findElement(By.linkText("ADICIONAR PRODUTO")).click();
 
         // preencher dados do produto e o valor será = 0
+        navegador.findElement(By.id("produtonome")).sendKeys("PlayStation 5");
+        navegador.findElement(By.name("produtovalor")).sendKeys("000");
+        navegador.findElement(By.id("produtocores")).sendKeys("branco,azul");
 
         // submeter o formulário
+        navegador.findElement(By.cssSelector("button[type='submit']")).click();
 
         // validar mensagem de erro fora apresentada
     }
