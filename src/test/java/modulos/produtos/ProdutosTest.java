@@ -55,12 +55,31 @@ public class ProdutosTest {
                 .submeterFormularioDeLogin()
                 .acessarOFormularioDeAdicaoNovoProduto()
                 .informarNomeDoProduto("PlayStation 6")
-                .informarValorDoProduto("71000")
+                .informarValorDoProduto("710000")
                 .informarCorDoProduto("Branco,Azul")
                 .submeterFormularioDeAdicaoComErro()
                 .capturarMensagemApresentada();
 
         Assertions.assertEquals("O valor do produto deve estar entre R$ 0,01 e R$ 7.000,00", mensagemApresentada);
+    }
+
+    @Test
+    @DisplayName("Adicionar um novo produto com sucesso")
+    public void testAdicionarUmNovoProdutoComSucesso() {
+        String mensagemApresentada = new LoginPage(navegador)
+                .informarOUsuario("admin")
+                .informarASenha("admin")
+                .submeterFormularioDeLogin()
+                .acessarOFormularioDeAdicaoNovoProduto()
+                .informarNomeDoProduto("Desktop")
+                .informarValorDoProduto("100000")
+                .informarCorDoProduto("preto")
+                .submeterFormularioDeAdicaoComSucesso()
+                .capturarMensagemApresentada();
+
+        Assertions.assertEquals("Produto adicionado com sucesso", mensagemApresentada);
+
+
     }
 
     @AfterEach

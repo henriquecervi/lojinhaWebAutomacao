@@ -18,13 +18,13 @@ public class FormularioDeAdicaoDeProdutoPage {
     }
 
     public FormularioDeAdicaoDeProdutoPage informarValorDoProduto(String produtoValor) {
-        navegador.findElement(By.name("produtovalor")).sendKeys("000");
+        navegador.findElement(By.name("produtovalor")).sendKeys(produtoValor);
 
         return this;
     }
 
     public FormularioDeAdicaoDeProdutoPage informarCorDoProduto(String produtoCor) {
-        navegador.findElement(By.id("produtocores")).sendKeys("branco,azul");
+        navegador.findElement(By.id("produtocores")).sendKeys(produtoCor);
 
         return this;
     }
@@ -33,6 +33,12 @@ public class FormularioDeAdicaoDeProdutoPage {
         navegador.findElement(By.cssSelector("button[type='submit']")).click();
 
         return new ListaDeProdutosPage(navegador);
+    }
+
+    public FormularioDeEdicaoDoProdutoPage submeterFormularioDeAdicaoComSucesso() {
+        navegador.findElement(By.cssSelector("button[type='submit']")).click();
+
+        return new FormularioDeEdicaoDoProdutoPage(navegador);
     }
 
 }
